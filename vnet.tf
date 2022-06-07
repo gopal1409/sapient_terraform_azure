@@ -14,6 +14,11 @@ resource "azurerm_subnet" "mysubnet" {
 }
 #public ip we have create inside our rg but not yet attached with anything
 resource "azurerm_public_ip" "mypublicip" {
+ #adding explicitly dependecy to have this resource created only after virtual netowrk and subnet resources are created
+ depends_on = [
+   azurerm_virtual_network.myvnet,
+   azurerm_subnet.mysubnet
+ ]
   name                = "mypublicip-1"
   resource_group_name = azurerm_resource_group.rg.name
   location            = azurerm_resource_group.rg.location
@@ -36,3 +41,4 @@ resource "azurerm_network_interface" "myvmnic1" {
     public_ip_address_id =  azurerm_public_ip.mypublicip.id
   }
 }
+#we want the virtual network will be created first then only create the subnet and public ip
