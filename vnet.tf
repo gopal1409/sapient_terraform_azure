@@ -24,7 +24,7 @@ resource "azurerm_public_ip" "mypublicip" {
   resource_group_name = azurerm_resource_group.rg.name
   location            = azurerm_resource_group.rg.location
   allocation_method   = "Static" ###public ip can be static or dynamic in nature
-  domain_name_label = "app1-vm${count.index}-${random_string.myrandom..id}"
+  domain_name_label = "app1-vm${count.index}-${random_string.myrandom.id}"
   tags = {
     environment = "Production"
   }
