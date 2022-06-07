@@ -3,7 +3,7 @@ resource "azurerm_linux_virtual_machine" "mylinuxvm" {
   name                = "mylinuxvm${count.index}"
   resource_group_name = azurerm_resource_group.rg.name
   location            = azurerm_resource_group.rg.location
-  computer_name = "devlinux-vm1-${count-index}"
+  computer_name = "devlinux-vm1-${count.index}"
   size                = "Standard_DS1_v2"
   admin_username      = "adminuser"
   network_interface_ids = [
