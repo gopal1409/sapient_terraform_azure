@@ -1,4 +1,4 @@
 resource "azurerm_resource_group" "rg" {
-  name     = "myresourcegrp"
+  name     = "myrg-1"
   location = "eastus"
 }
